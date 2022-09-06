@@ -87,3 +87,28 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme Options',
+		'menu_title'	=> 'Theme Options',
+		'menu_slug' 	=> 'theme-options',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> true
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Homepage Options',
+		'menu_title'	=> 'Homepage',
+		'parent_slug'	=> 'theme-options',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Footer Options',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-options',
+	));
+	
+}
