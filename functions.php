@@ -112,3 +112,29 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 }
+
+
+/**
+ * Create HTML Image from Array
+ *
+ * This function uses the `wp_get_attachment_image` functions and
+ * generates a HTML image from an image array, also allowing for
+ * additional class(es) to be supplied
+ *
+ * @param array $image_arr The image array
+ * @param string (optional) $classes additional classes to add to the image
+ * @return string $html_image an Image in html format to be used in template
+ */
+
+ function create_html_image($image_arr, $classes="") {
+
+	// break out image array
+	$image_ID = $image_arr['ID'];
+	$image_url = $image_arr['url'];
+	$image_alt = $image_alt['alt'];
+
+	// create HTML image
+	$image = wp_get_attachment_image( $image_ID, 'full', '', array('src' => $image_url, 'alt' => $image_alt, 'class' => $classes ) );
+
+	return $image;
+ }

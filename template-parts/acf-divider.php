@@ -6,4 +6,4 @@
 
 ?>
 
-<div class="container divider"></div>
+<div class="container-fluid py-3 px-2 px-md-3 px-lg-4 px-xl-5 divider"></div>

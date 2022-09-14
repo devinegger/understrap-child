@@ -37,6 +37,11 @@ h1 {
     }
 }
 
+// forget about shortcode buttons
+.fasc-button {
+    @extend .btn;
+}
+
 .divider::before {
     @extend .bg-gradient;
     content: '';

@@ -21,34 +21,10 @@ get_header();
 <main class="site-main" id="main">
 	<div id="content" tabindex="-1">
 
-		<section id="page-title" class="bg-gradient py-3">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-6 offset-1 text-white">
-						<?php
-						while ( have_posts() ) {
-							the_post();
-							the_title( '<h1 class="entry-title text-uppercase">', '</h1>' );
-							the_content();
-					
-						}
-						?>
+		<?php get_template_part('template-parts/page', 'title' ); ?>
 
-					</div>
-				</div>
-			</div>
-		</section>
+		<?php get_template_part('template-parts/acf','main'); ?>
 		
-
-		<div class="row">
-
-
-
-		
-
-				
-
-		</div><!-- .row -->
 	</div><!-- #content -->
 </main><!-- #main -->
 <?php

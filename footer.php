@@ -25,7 +25,7 @@ $contact_us = get_field('contact_us', 'option');
 
 	<footer class="site-footer" id="colophon">
 
-		<div class="container py-3">
+		<div class="container-fluid px-md-3 px-lg-4 px-xl-5 py-3">
 
 			<div class="row">
 

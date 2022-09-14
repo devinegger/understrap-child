@@ -1,7 +1,7 @@
 <?php 
 
 /** 
- * Template Part for displaying ACF Flexible Content - Page Section - Full Width Gradient
+ * Template Part for displaying ACF Flexible Content - Page Section - Column Rows Image Right
  */
 
 // get group of left column items (array)
@@ -13,21 +13,13 @@ $left_column_rows = $left_column['rows'];
 // should there be a divider between the rows?
 $display_divider = $left_column['display_row_divider'];
 
-// get image field (array)
-$image_arr = get_sub_field('image');
-
-// break out image array
-$image_ID = $image_arr['ID'];
-$image_url = $image_arr['url'];
-$image_alt = $image_alt['alt'];
-
-// create HTML image
-$image = wp_get_attachment_image( $image_ID, 'full', array('src' => $image_url, 'alt' => $image_alt ) );
+// image on right column
+$right_image = create_html_image(get_sub_field('right_image'))
 
 ?>
 
-<section>
-    <div class="container">
+<section class="column-row-section">
+    <div class="container-fluid px-2 px-md-3 px-lg-4 px-xl-5">
         <div class="row">
             <div class="col-md-7 m-auto">
                 <div class="row">
@@ -35,17 +27,33 @@ $image = wp_get_attachment_image( $image_ID, 'full', array('src' => $image_url, 
                     <?php $row_num = 1; ?>
                     <?php foreach($left_column_rows as $row) : ?>
 
-                        <?php $headline_color = $row['headline_color'];  ?>
-                        <?php $headline = $row['headline'];  ?>
-                        <?php $content = $row['content'];  ?>
-                        <?php $button = $row['button'];  ?>
-                        <?php $text_class = "text-" . $headline_color; ?>
+                        <?php if($row['row_image']): ?>
 
-                        <div class="col-12 py-3">
-                            <h2 class="<?= $text_class ?>"><?= $headline ?></h2>
-                            <p><?= $content ?></p>
-                            <a href="<?= $button['url'] ?>" class="btn btn-primary"><?= $button['title'] ?></a>
-                        </div>
+                            <?php $row_image = create_html_image($row['row_image'], 'row-image') ?>
+
+                            <div class="col-12 text-end">
+                                <?= $row_image ?>
+                            </div>
+
+                        <?php else: ?>
+
+                            <?php $heading_color = $row['heading_color'];  ?>
+                            <?php $heading = $row['heading'];  ?>
+                            <?php $content = $row['content'];  ?>
+                            <?php $button = $row['button'];  ?>
+                            <?php $text_class = "text-" . $heading_color; ?>
+
+                            <div class="col-12 py-3">
+                                <?php if($heading): ?> 
+                                    <h2 class="<?= $text_class ?>"><?= $heading ?></h2>
+                                <?php endif; ?>
+                                <p><?= $content ?></p>
+                                <?php if($button): ?>
+                                    <a href="<?= $button['url'] ?>" class="btn btn-primary"><?= $button['title'] ?></a>
+                                <?php endif; ?>
+                            </div>
+
+                        <?php endif; ?>
 
                         <?php if($row_num===1 && $display_divider) : ?>
                             <span class="divider"></span>
@@ -57,7 +65,7 @@ $image = wp_get_attachment_image( $image_ID, 'full', array('src' => $image_url, 
                 </div>
             </div>
             <div class="col-md-5 p-3 m-auto">
-                <?=  $image ?>
+                <?=  $right_image ?>
             </div>
         </div><!-- .row -->
     </div>

@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 	</h2>
 
 
-	<div class="container align-items-end">
+	<div class="container-fluid px-md-3 px-lg-4 px-xl-5 align-items-end">
 
 		<!-- Your site title as branding in the menu -->
 		<?php if ( ! has_custom_logo() ) { ?>
